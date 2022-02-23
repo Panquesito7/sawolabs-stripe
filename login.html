@@ -16,13 +16,17 @@
     </div>
     <script src="https://websdk.sawolabs.com/sawo.min.js"></script>
     <script>
+         var key;
           $(document).ready(function () {
             $.getJSON('config.json', function(data) {
+              key = data.key
+            });
+          })
 
       var config = {
         containerID: "sawo-container",
         identifierType: "email", // can be either 'email' or 'phone_number_sms'
-        apiKey: data.key, // add your api key here
+        apiKey: key, // add your api key here
         onSuccess: (payload) => {
           console.log(payload);
           document.getElementById("sawo-container").style.display = "none";
@@ -32,8 +36,6 @@
       };
       var sawo = new Sawo(config);
       sawo.showForm();
-    }); 
-  }); 
     </script>
   </body>
 </html>
