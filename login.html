@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAWO HTML SAMPLE APP</title>
+    <link rel="stylesheet" href="assets/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-container">
+        <script>
+          $(document).ready(function () {
+    
+              $.getJSON("test.json", 
+                      function (data) {
+    
+                  $.each(data, function (key, value) {
+                      <h1>value.test</h1>
+                  });
+
+                  //INSERTING ROWS INTO TABLE 
+                 //$('#table').append(student);
+              });
+          });
+      </script>
+        <h1>Login</h1>
+        <div id="sawo-container" style="height: 400px; width: 300px"></div>
+        <div id="status"></div>
+      </div>
+    </div>
+    <script src="https://websdk.sawolabs.com/sawo.min.js"></script>
+    <script>
+      var config = {
+        containerID: "sawo-container",
+        identifierType: "email", // can be either 'email' or 'phone_number_sms'
+        apiKey: "", // add your api key here
+        onSuccess: (payload) => {
+          console.log(payload);
+          document.getElementById("sawo-container").style.display = "none";
+          document.getElementById("status").innerHTML =
+            "Login Success <br> User Id : " + payload.verification_token + "<br> Token : "+ payload.user_id;
+        },
+      };
+      var sawo = new Sawo(config);
+      sawo.showForm();
+    </script>
+  </body>
+</html>
