@@ -22,18 +22,11 @@
               key = data.key
             });
           })*/
-          var key = '';
-
-          fetch("config.json")
-            .then(response => response.json())
-            .then(data => {
-              key = data.key;
-          })
 
       var config = {
         containerID: "sawo-container",
         identifierType: "email", // can be either 'email' or 'phone_number_sms'
-        apiKey: key, // add your api key here
+        apiKey: "", // add your api key here
         onSuccess: (payload) => {
           console.log(payload);
           document.getElementById("sawo-container").style.display = "none";
@@ -41,6 +34,12 @@
             "Login Success <br> User Id : " + payload.verification_token + "<br> Token : "+ payload.user_id;
         },
       };
+      fetch("config.json")
+            .then(response => response.json())
+            .then(data => {
+              config.apiKey = data.key;
+          })
+
       var sawo = new Sawo(config);
       sawo.showForm();
     </script>
