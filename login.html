@@ -16,11 +16,18 @@
     </div>
     <script src="https://websdk.sawolabs.com/sawo.min.js"></script>
     <script>
-         var key = '';
+         /*var key = '';
           $(document).ready(function () {
             $.getJSON('config.json', function(data) {
               key = data.key
             });
+          })*/
+          var key = '';
+
+          fetch("config.json")
+            .then(response => response.json())
+            .then(data => {
+              key = data.key;
           })
 
       var config = {
