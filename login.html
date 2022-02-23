@@ -38,6 +38,7 @@
             .then(response => response.json())
             .then(data => {
               config.apiKey = data.key;
+              console.log(data.test)
           })
 
       var sawo = new Sawo(config);
