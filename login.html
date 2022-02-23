@@ -18,9 +18,6 @@
     <script>
          /*var key = '';
           $(document).ready(function () {
-            $.getJSON('config.json', function(data) {
-              key = data.key
-            });
           })*/
 
       var config = {
@@ -34,12 +31,9 @@
             "Login Success <br> User Id : " + payload.verification_token + "<br> Token : "+ payload.user_id;
         },
       };
-      fetch("config.json")
-            .then(response => response.json())
-            .then(data => {
-              config.apiKey = data.key;
-              console.log(data.test)
-          })
+      $.getJSON('config.json', function(data) {
+              config.apiKey = data.key
+      });
 
       var sawo = new Sawo(config);
       sawo.showForm();
