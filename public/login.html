@@ -34,13 +34,13 @@
         // can be one of 'email' or 'phone_number_sms'
         identifierType: "email",
         // Add the API key copied from 2nd step
-        apiKey: "6b2eb8e8-5ff1-4671-851a-fb7a0084a33b",
+        apiKey: "550386e9-55de-439d-8271-e14c8163bde0",
         // Add a callback here to handle the payload sent by sdk
         onSuccess: (payload) => {
           // Storing the payload in sessionStorage
           sessionStorage.setItem("payload", JSON.stringify(payload));
           // Redirecting to "/success"
-          window.location.href = "/loginsuccess";
+          window.location.href = "/loginsuccess.html";
         },
       };
       var sawo = new Sawo(config);
